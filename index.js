@@ -32,16 +32,15 @@ var $target= $("#target");
       dataType: "jsonp",
       data: "method=getQuote&format=jsonp&lang=en&jsonp=?",
       success: function( response ) {
-        $target.html("<h4 id='o' class='text-center'>" +
-          response.quoteText + "</h4><p><br>&dash; " + response.quoteAuthor + "</p> <br>      ");
-          $tweet.attr("href", "http://twitter.com/home/?status=" + response.quoteText +
-          ' (' + response.quoteAuthor + ')');
+        $target.html("<h4 id='my' class='text-center'>" +
+          response.quoteText + "</h4><p id='para'><br>&dash; " + response.quoteAuthor + "</p> <br>      ");
+        
         
       }  
   });
 }
-
    function changeLink(){
-    document.getElementById("tweet").href = "http://twitter.com/home/?status="+  document.getElementById('my').text +
-      ' (' + document.getElementById('para').text + ')';
-    }
+       var textToTweet=$("#my").text()+ ' (' + $("#para").text()+')';
+     var tweetLink = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(textToTweet);
+ window.open(tweetLink,'_blank');
+   }
