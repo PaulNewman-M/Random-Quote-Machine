@@ -20,13 +20,12 @@ $(function () {
 
 });
 
-
 $('button').click(function(){
   randomQuote();
 });
-
 function randomQuote() {
 var $target= $("#target");
+ var $tweet= $("#tweet"); 
   $.ajax({
     
       url: "http://api.forismatic.com/api/1.0/?",
@@ -34,7 +33,15 @@ var $target= $("#target");
       data: "method=getQuote&format=jsonp&lang=en&jsonp=?",
       success: function( response ) {
         $target.html("<h4 id='o' class='text-center'>" +
-          response.quoteText + "</h4><p><br>&dash; " + response.quoteAuthor + "</p>");
+          response.quoteText + "</h4><p><br>&dash; " + response.quoteAuthor + "</p> <br>      ");
+          $tweet.attr("href", "http://twitter.com/home/?status=" + response.quoteText +
+          ' (' + response.quoteAuthor + ')');
+        
       }  
   });
 }
+
+   function changeLink(){
+    document.getElementById("tweet").href = "http://twitter.com/home/?status="+  document.getElementById('my').text +
+      ' (' + document.getElementById('para').text + ')';
+    }
