@@ -3,9 +3,10 @@
     $("#Message").on("click", function(){
      $("#target").fadeToggle(500).fadeToggle(500);
     //  $(".message").html("Here is the message ");
-     
+      //checking commit
     });
   });
+
 
 var showText = function (target, message, index, interval) {   
   if (index < message.length) {
